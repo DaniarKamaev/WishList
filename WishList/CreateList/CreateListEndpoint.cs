@@ -9,7 +9,7 @@ namespace WishList.CreateList
     {
         public static void CreateEndpoint(this IEndpointRouteBuilder app)
         {
-            app.MapPost("wishlist/create", async (
+            app.MapPost("wishlist/listcreate", async (
                 [FromBody] CreateListReqest reqest,
                 CancellationToken cancellationToken,
                 IMediator mediator) =>

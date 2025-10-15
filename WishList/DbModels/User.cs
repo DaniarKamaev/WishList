@@ -14,6 +14,7 @@ public partial class User
     public DateOnly Birthday { get; set; }
 
     public string Email { get; set; } = null!;
+    public List<WishList> WishLists { get; set; } = new();
 
-    public virtual ICollection<WishList> WishLists { get; set; } = new List<WishList>();
+    //public virtual ICollection<WishList> WishLists { get; set; } = new List<WishList>();
 }

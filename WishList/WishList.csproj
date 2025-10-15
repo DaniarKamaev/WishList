@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ChekList\" />
     <Folder Include="Aunification\" />
   </ItemGroup>
 

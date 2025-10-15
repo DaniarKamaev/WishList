@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using WishList.ChekList;
 using WishList.CreateList;
+using WishList.CreateUser;
 using WishList.DbModels;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,9 @@ builder.Services.AddDbContext<SysContext>(options =>
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
+app.CreateEndpoint();
+app.CreateUserMap();
+app.ChekListMap();
 
 // Конфигурация pipeline
 if (app.Environment.IsDevelopment())
@@ -32,6 +37,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.CreateEndpoint();
+
 
 app.Run("http://0.0.0.0:80");
