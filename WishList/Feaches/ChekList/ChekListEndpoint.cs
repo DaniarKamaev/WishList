@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WishList.ChekList
+namespace WishList.Feaches.ChekList
 {
     public static class ChekListEndpoint
     {

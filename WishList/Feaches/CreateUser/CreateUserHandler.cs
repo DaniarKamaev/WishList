@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using WishList.DbModels;
-namespace WishList.CreateUser
+namespace WishList.Feaches.CreateUser
 {
     public class CreateUserHandler(SysContext db) : IRequestHandler<CreateUserReqest, CreateUserResponse>
     {

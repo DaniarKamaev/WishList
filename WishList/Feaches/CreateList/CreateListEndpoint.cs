@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 
-namespace WishList.CreateList
+namespace WishList.Feaches.CreateList
 {
     public static class CreateListEndpoint
     {
@@ -14,8 +15,18 @@ namespace WishList.CreateList
                 CancellationToken cancellationToken,
                 IMediator mediator) =>
             {
-                var response = await mediator.Send(reqest, cancellationToken);
-                return Results.Ok(response);
+                try
+                {
+                    var response = await mediator.Send(reqest, cancellationToken);
+                    return Results.Ok(response);
+                } catch (ValidationException ex)
+                {
+                    return Results.BadRequest(ex);
+                } catch (Exception ex)
+                {
+                    return Results.BadRequest(ex);
+                }
+                
             });
 
         }

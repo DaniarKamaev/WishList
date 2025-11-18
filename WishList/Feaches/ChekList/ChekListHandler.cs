@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WishList.DbModels;
 
-namespace WishList.ChekList
+namespace WishList.Feaches.ChekList
 {
     public class ChekListHandler(SysContext db) : IRequestHandler<ChekListResponse, IEnumerable<User>>
     {
@@ -15,10 +15,9 @@ namespace WishList.ChekList
                 {
                     Id = u.Id,
                     UserName = u.UserName,
-                   // UserPassword = u.UserPassword,
                     Birthday = u.Birthday,
                     Email = u.Email,
-                    WishLists = u.WishLists.Select(w => new WishList.DbModels.WishList
+                    WishLists = u.WishLists.Select(w => new DbModels.WishList
                     {
                         WishListId = w.WishListId,
                         Gift = w.Gift,

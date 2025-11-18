@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using WishList.CreateList;
 
-namespace WishList.CreateUser
+namespace WishList.Feaches.CreateUser
 {
     public record CreateUserReqest (
         string UserName,

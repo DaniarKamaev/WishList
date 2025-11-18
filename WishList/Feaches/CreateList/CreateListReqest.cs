@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace WishList.CreateList
+namespace WishList.Feaches.CreateList
 {
     public record CreateListReqest(
         string Gift,

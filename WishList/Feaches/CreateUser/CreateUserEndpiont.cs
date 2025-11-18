@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace WishList.CreateUser
+namespace WishList.Feaches.CreateUser
 {
     public static class CreateUserEndpiont
     {

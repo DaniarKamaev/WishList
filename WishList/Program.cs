@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using WishList.ChekList;
-using WishList.CreateList;
-using WishList.CreateUser;
 using WishList.DbModels;
+using WishList.Feaches.Aunification;
+using WishList.Feaches.Booked;
+using WishList.Feaches.ChekList;
+using WishList.Feaches.CreateList;
+using WishList.Feaches.CreateUser;
+using WishList.Feaches.DeleteWishList;
+using WishList.Feaches.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,9 +28,14 @@ builder.Services.AddDbContext<SysContext>(options =>
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
+
 app.CreateEndpoint();
 app.CreateUserMap();
 app.ChekListMap();
+app.BookedEndpointMap();
+app.DeleteWishListMap();
+app.AuthMap();
+app.RegMap();
 
 // Конфигурация pipeline
 if (app.Environment.IsDevelopment())

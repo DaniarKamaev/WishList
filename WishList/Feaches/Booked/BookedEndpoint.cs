@@ -1,0 +1,33 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
+
+namespace WishList.Feaches.Booked
+{
+    public static class BookedEndpoint
+    {
+        public static void BookedEndpointMap(this IEndpointRouteBuilder app)
+        {
+            app.MapPost("wishlist/booked", async (
+                [FromBody] BookedReqest reqest,
+                IMediator mediator,
+                CancellationToken cancellationToken) =>
+            {
+                try
+                {
+                    var response = await mediator.Send(reqest, cancellationToken);
+                    return Results.Ok(response);
+                }
+                catch (ValidationException ex)
+                {
+                    return Results.BadRequest(ex);
+                }
+                catch (Exception ex)
+                {
+                    return Results.BadRequest(ex);
+                }
+                
+            });
+        }
+    }
+}
