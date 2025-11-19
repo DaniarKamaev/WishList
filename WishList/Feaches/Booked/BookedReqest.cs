@@ -3,6 +3,7 @@
 namespace WishList.Feaches.Booked
 {
     public record BookedReqest(
-        int id
+        int id,
+        sbyte booked
         ) : IRequest<BookedResponse>;
 }

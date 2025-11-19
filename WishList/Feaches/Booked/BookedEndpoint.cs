@@ -22,12 +22,16 @@ namespace WishList.Feaches.Booked
                 {
                     return Results.BadRequest(ex);
                 }
+                catch (UnauthorizedAccessException)
+                {
+                    return Results.Unauthorized();
+                }
                 catch (Exception ex)
                 {
                     return Results.BadRequest(ex);
                 }
                 
-            });
+            }).RequireAuthorization();
         }
     }
 }

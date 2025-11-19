@@ -6,7 +6,6 @@ using WishList.Feaches.Aunification;
 using WishList.Feaches.Booked;
 using WishList.Feaches.ChekList;
 using WishList.Feaches.CreateList;
-using WishList.Feaches.CreateUser;
 using WishList.Feaches.DeleteWishList;
 using WishList.Feaches.Registration;
 using System.Text;
@@ -52,7 +51,6 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 var app = builder.Build();
 
 app.CreateEndpoint();
-app.CreateUserMap();
 app.ChekListMap();
 app.BookedEndpointMap();
 app.DeleteWishListMap();
