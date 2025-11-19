@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using WishList.DbModels;
+using WishList.Feaches.Authorization;
 
 namespace WishList.Feaches.DeleteWishList
 {
@@ -7,14 +10,26 @@ namespace WishList.Feaches.DeleteWishList
     {
         public static void DeleteWishListMap(this IEndpointRouteBuilder app)
         {
-            app.MapDelete("wishList/delete", async(
-                [FromBody] DeleteWishListReqest reqest,
+            app.MapDelete("wishlist/delete/{wishListId}", async (
+                int wishListId,
                 IMediator mediator,
-                CancellationToken cancellationToken) => 
+                CancellationToken cancellationToken) =>
             {
-                var response = await mediator.Send(reqest, cancellationToken);
-                return Results.Ok(response);
-            });
+                try
+                {
+                    var request = new DeleteWishListReqest(wishListId);
+                    var response = await mediator.Send(request, cancellationToken);
+                    return Results.Ok(response);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    return Results.Unauthorized();
+                }
+                catch (Exception ex)
+                {
+                    return Results.BadRequest("Ошибка: " + ex.Message);
+                }
+            }).RequireAuthorization();
         }
     }
 }

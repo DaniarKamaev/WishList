@@ -7,8 +7,6 @@ namespace WishList.Feaches.CreateList
     {
         public CreateValidation()
         {
-            RuleFor(x => x.UserId).NotEmpty()
-                .WithMessage("Id не может быть пустым");
             RuleFor(x => x.Gift).NotEmpty()
                 .WithMessage("Поле gift не может быть пустым");
             RuleFor(x => x.Price).NotEmpty()
