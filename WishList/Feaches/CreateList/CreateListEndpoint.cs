@@ -36,6 +36,15 @@ public static class CreateListEndpoint
             {
                 return Results.BadRequest(ex.Message);
             }
-        }).RequireAuthorization();
+        })
+        .RequireAuthorization()
+        .WithName("CreateWishList")
+        .WithTags("WishLists")
+        .WithSummary("Создание нового вишлиста")
+        .WithDescription("Добавляет новый подарок в список желаний текущего пользователя")
+        .WithOpenApi(operation => new(operation)
+        {
+            Summary = "Создание вишлиста"
+        });
     }
 }

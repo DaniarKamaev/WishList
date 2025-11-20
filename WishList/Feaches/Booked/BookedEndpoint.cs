@@ -31,7 +31,16 @@ namespace WishList.Feaches.Booked
                     return Results.BadRequest(ex);
                 }
                 
-            }).RequireAuthorization();
+            })
+            .RequireAuthorization()
+            .WithName("UpdateBookingStatus")
+            .WithTags("WishLists")
+            .WithSummary("Обновление статуса бронирования")
+            .WithDescription("Изменяет статус бронирования подарка (0 - свободен, 1 - забронирован)")
+            .WithOpenApi(operation => new(operation)
+            {
+                Summary = "Обновление статуса бронирования"
+            });
         }
     }
 }

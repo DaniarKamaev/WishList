@@ -15,7 +15,15 @@ namespace WishList.Feaches.ChekList
                 var response = new ChekListResponse(id);
                 var user = await mediator.Send(response);
                 return Results.Ok(user);
-            });
+            })
+            .WithName("GetUserWishLists")
+            .WithTags("WishLists")
+            .WithSummary("Получение вишлистов пользователя")
+            .WithDescription("Возвращает все вишлисты указанного пользователя")
+            .WithOpenApi(operation => new(operation)
+            {
+                Summary = "Получение вишлистов пользователя"
+            }); ;
         }
     }
 }

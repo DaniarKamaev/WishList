@@ -21,7 +21,15 @@ namespace WishList.Feaches.Registration
                 { 
                     return Results.BadRequest(ex.Message);
                 }
-            });
+            })
+            .WithName("RegisterUser")
+            .WithTags("Authentication")
+            .WithSummary("Регистрация нового пользователя")
+            .WithDescription("Создает нового пользователя в системе")
+            .WithOpenApi(operation => new(operation)
+            {
+                Summary = "Регистрация пользователя"
+            }); ;
         }
     }
 }

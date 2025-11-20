@@ -29,7 +29,16 @@ namespace WishList.Feaches.DeleteWishList
                 {
                     return Results.BadRequest("Ошибка: " + ex.Message);
                 }
-            }).RequireAuthorization();
+            })
+            .RequireAuthorization()
+            .WithName("DeleteWishList")
+            .WithTags("WishLists")
+            .WithSummary("Удаление вишлиста")
+            .WithDescription("Удаляет вишлист по ID (только владелец)")
+            .WithOpenApi(operation => new(operation)
+            {
+                Summary = "Удаление вишлиста"
+            });
         }
     }
 }

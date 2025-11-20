@@ -25,7 +25,15 @@ namespace WishList.Feaches.Aunification
                 {
                     return Results.BadRequest(ex.Message);
                 }
-            });
+            })
+            .WithName("AuthenticateUser")
+            .WithTags("Authentication")
+            .WithSummary("Аутентификация пользователя")
+            .WithDescription("Проверяет учетные данные пользователя и возвращает JWT токен")
+            .WithOpenApi(operation => new(operation)
+            {
+                Summary = "Аутентификация пользователя"
+            }); ;
         }
     }
 }
